@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { globalEventBus } from '../event-bus/bus';
+import { globalEventBus, LESSONS_LIST_AVAILABLE } from '../event-bus/bus';
 import { Lesson } from '../shared/model/lesson.model';
 
 @Component({
@@ -12,7 +12,7 @@ export class LessonsListComponent implements OnInit {
 
   constructor() {
     console.log('Lessons Lists reg as obs');
-    globalEventBus.registerObserver(this);
+    globalEventBus.registerObserver(LESSONS_LIST_AVAILABLE, this);
   }
   ngOnInit() {}
   notify(data: Lesson[]) {
